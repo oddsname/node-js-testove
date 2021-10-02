@@ -1,0 +1,39 @@
+.d-flex {
+    display: flex;
+}
+
+.justify-content-space-between {
+    justify-content: space-between;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+p {
+    font-size: 18px;
+}
+
+.f-size-14 {
+    font-size: 14px;
+}
+
+.f-size-16 {
+    font-size: 16px;
+}
+
+.f-size-18 {
+    font-size: 18px;
+}
+
+.f-size-20 {
+    font-size: 20px;
+}
+
+.f-size-22 {
+    font-size: 22px;
+}
+
+.black-text {
+    color: black;
+}
