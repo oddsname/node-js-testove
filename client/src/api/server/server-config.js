@@ -1,5 +1,5 @@
 import axios from "axios";
-import {useEnv} from "../../hooks/env.js";
+import {useEnv} from "../../composable/env.js";
 
 const {getServerUrl} = useEnv()
 

@@ -2,14 +2,17 @@
 </script>
 <template>
   <div>
-    <div class="app-margin">
+    <div class="guest-content">
       <router-view />
     </div>
   </div>
 </template>
 <style scoped>
-.app-margin {
+.guest-content {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
+  align-content: center;
 }
 </style>

@@ -1,13 +1,11 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import Equal from 'equal-vue'
-import 'equal-vue/dist/style.css'
-import "tailwindcss/tailwind.css"
-
 import {router} from "./router";
+import {useAuth} from "./composable/auth.js";
+
+const {check} = useAuth()
 
 export const app = createApp(App)
-    .use(Equal)
     .use(router)
     .mount('#app')
