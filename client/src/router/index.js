@@ -4,7 +4,7 @@ import Dashboard from './../ui/pages/Dashboard.vue'
 import MainLayout from "./../ui/layout/main/MainLayout.vue"
 import GuestLayout from "./../ui/layout/guest/GuestLayout.vue"
 
-export const routeName = {
+export const routeNames = {
     login: 'login',
     filesList: 'files-list',
 }
@@ -16,7 +16,7 @@ const routes = [
         children: [
             {
                 path: 'list',
-                name: routeName.filesList,
+                name: routeNames.filesList,
                 component: Dashboard
             }
         ],
@@ -27,7 +27,7 @@ const routes = [
         children: [
             {
                 path: 'login',
-                name: routeName.login,
+                name: routeNames.login,
                 component: Login,
             }
         ]

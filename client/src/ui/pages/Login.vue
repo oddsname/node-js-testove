@@ -4,7 +4,7 @@ import TextField from "../../ui/components/common/fields/TextField.vue"
 import {useValidation} from "../../composable/validation.js";
 import {useAuth} from "../../composable/auth.js";
 import {useErrorsList} from "../../composable/errors-list.js";
-import {router, routeName} from "../../router";
+import {router, routeNames} from "../../router";
 
 const email = ref('');
 const password = ref('');
@@ -34,7 +34,7 @@ const onSubmit = async () => {
     const loginAttempt = await login(email, password)
 
     if(loginAttempt) {
-      await router.push({name: routeName.filesList})
+      await router.push({name: routeNames.filesList})
       return null;
     }
 

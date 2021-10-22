@@ -1,9 +1,9 @@
 <script setup>
-import {routeName} from "../../../router";
+import {routeNames} from "../../../router";
 
 const headerMenu = [
-  {text: 'Home', route: routeName.filesList},
-  {text: 'Login', route: routeName.login},
+  {text: 'Home', route: routeNames.filesList},
+  {text: 'Login', route: routeNames.login},
 ]
 </script>
 <template>
