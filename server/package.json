@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon src/main.ts",
     "prod": "tsc -p ./dist",
-    "seed": "ts-node ./src/database/seeder.ts"
+    "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
+    "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +21,7 @@
     "mongodb": "^3.6.0",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.38",
+    "typeorm-seeding": "^1.6.1",
     "typescript-ioc": "^3.2.2"
   },
   "devDependencies": {
