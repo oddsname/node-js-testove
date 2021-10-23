@@ -14,5 +14,4 @@ export class User {
 
     @Column({type: "string"})
     password: string;
-
 }
