@@ -14,23 +14,24 @@ export class DatabaseSeeder {
     public hashService: HashService
 
     public async seed() {
-
-        await connectDatabase();
-
         const user = new User();
 
         user.name = 'Admin';
         user.email = 'admin@example.net';
         user.password = await this.hashService.hash('password');
 
-
-        await this.userRepository.save(user);
+        await this.userRepository.save(user)
     }
 }
 
 
-const dbSeeder = new DatabaseSeeder();
 
-dbSeeder.seed().then(() => {
-    console.log("Database seeded successfully")
-});
+connectDatabase().then(() => {
+    const dbSeeder = new DatabaseSeeder();
+
+    dbSeeder.seed().then(() => {
+        console.log("Database seeded successfully")
+        process.exit();
+    });
+})
+
