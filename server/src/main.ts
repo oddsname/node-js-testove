@@ -1,22 +1,12 @@
-import {connectDatabase} from "./database/db";
-import express from "express"
-import {router} from "./router/router";
 import {configs} from "./configs/config";
+import {createConnection} from "typeorm";
+import {App} from "./app";
 
-const startApp = (port: string) => {
-    connectDatabase().then(() => {
-        console.log('success');
-    }).catch(() => console.log('fail'))
+createConnection().then(() => {
+    console.log(`\nDatabase Connected`);
 
-    const app = express();
+    const app = new App();
 
-    app.use(router);
+    app.listen(configs.SERVER_PORT);
+})
 
-    app.listen(port, () => {
-        console.log('Server started on port: ' + port);
-    })
-}
-
-startApp(
-    configs.SERVER_PORT,
-)

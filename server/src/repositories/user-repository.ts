@@ -9,8 +9,7 @@ export class UserRepository {
         this.repository = getRepository(User);
     }
 
-     public async save(user: User): Promise<void>
-    {
+    public async save(user: User): Promise<void> {
         await this.repository.save(user);
     }
 

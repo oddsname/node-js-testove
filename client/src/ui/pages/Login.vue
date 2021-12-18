@@ -31,7 +31,7 @@ const onSubmit = async () => {
   const {success, message, field} = loginValidation()
 
   if(success) {
-    const loginAttempt = await login(email, password)
+    const loginAttempt = await login(email.value, password.value)
 
     if(loginAttempt) {
       await router.push({name: routeNames.filesList})

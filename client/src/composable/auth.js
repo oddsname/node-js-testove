@@ -9,12 +9,12 @@ let isUserAuth = false;
 export const useAuth = () => {
 
     const login = async (email, password) => {
-        const{data} = await serverApi.login(email, password)
+        const {data} = await serverApi.login(email, password)
 
         if(data.success) {
             cookieService.authToken.set(data.token)
 
-            return this.check();
+            return check();
         }
 
         return false;
@@ -50,7 +50,7 @@ export const useAuth = () => {
             cookieService.authToken.remove();
         }
 
-        return this.check();
+        return check();
     }
 
     return {

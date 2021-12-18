@@ -1,5 +1,4 @@
 import {Connection, createConnection, getConnection} from "typeorm";
-import {configs} from "../configs/config";
 import "reflect-metadata"
 
 export async function connectDatabase(): Promise<Connection> {
