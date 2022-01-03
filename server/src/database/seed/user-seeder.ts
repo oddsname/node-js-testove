@@ -1,6 +1,6 @@
-import {User} from "../../entity/user";
+import {User} from "../../domain/auth/entities/user";
 import {Inject} from "typescript-ioc";
-import {HashService} from "../../services/hash-service";
+import {HashService} from "../../infrastructure/services/hash-service";
 import {Factory, Seeder} from "typeorm-seeding";
 import {Connection} from "typeorm";
 

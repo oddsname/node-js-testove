@@ -1,10 +1,10 @@
 import cors from "cors"
 import {configs} from "./configs/config";
-import {errorHandler} from "./http/middlewares/error-hanlder";
 import {Controller} from "@overnightjs/core/lib/decorators/types";
 import {Server} from "@overnightjs/core";
 import {AuthController} from "./http/controllers/auth-controller";
 import {json, urlencoded} from "express";
+import {errorHandler} from "./http/middlewares/error-handler";
 
 export class App extends Server {
     constructor() {

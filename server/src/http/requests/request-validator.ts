@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {validate} from "class-validator";
+import {validate, ValidationError} from "class-validator";
 import {AppResponse} from "../responses/app-response";
 
 export function RequestValidator(params: object) {
@@ -14,10 +14,10 @@ export function RequestValidator(params: object) {
 
             const errors = await validate(paramClass);
 
-            if (errors.length) {
-                for (let errorKey in errors[0].constraints) {
-                    AppResponse.error(res, errors[0].constraints[errorKey], 'Validation Exception');
-                }
+            const errorMessage = getFirstError(errors)
+
+            if(errorMessage) {
+                AppResponse.error(res, errorMessage, 'ValidationException', 422)
             }
         };
 
@@ -33,4 +33,15 @@ function mapRequest(params: object, req: Request) {
     }
 
     return params;
+}
+
+function getFirstError(errors: ValidationError[]): string|null {
+
+    if (errors.length) {
+        for (let errorKey in errors[0].constraints) {
+            return errors[0].constraints[errorKey]
+        }
+    }
+
+    return null;
 }

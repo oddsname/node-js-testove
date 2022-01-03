@@ -7,7 +7,7 @@ export default {
     authSource: true,
     name: 'default',
     entities: [
-        __dirname + "/src/entity/*.ts"
+        __dirname + "/src/domain/*/entities/*.ts"
     ],
     seeds: [
         __dirname + "/src/database/seed/*.ts"
