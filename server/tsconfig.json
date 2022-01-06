@@ -10,5 +10,9 @@
     "skipLibCheck": true,
     "outDir": "dist",
     "strictPropertyInitialization": false,
+    "typeRoots": [
+      "@types",
+      "node_modules/@types"
+    ]
   }
 }

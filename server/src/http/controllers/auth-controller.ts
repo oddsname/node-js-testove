@@ -1,9 +1,9 @@
 import {NextFunction, Request, Response} from "express";
 import {AppResponse} from "../responses/app-response";
-import {Controller, Post} from "@overnightjs/core";
+import {Controller, Get, Post} from "@overnightjs/core";
 import {Inject} from "typescript-ioc";
-import {LoginParams} from "../requests/login-params";
-import {RequestValidator} from "../requests/request-validator";
+import {LoginParams} from "../requests/params/login-params";
+import {RequestValidator} from "../requests/decorators/request-validator";
 import {AuthService} from "../../domain/auth/services/auth-service";
 import {HeadersService} from "../services/headers-service";
 import {UserTransformer} from "../tranformers/user-transformer";

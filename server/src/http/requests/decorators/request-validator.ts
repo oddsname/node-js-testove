@@ -1,6 +1,6 @@
-import {Request, Response} from "express";
+import {NextFunction, Request, Response} from "express";
 import {validate, ValidationError} from "class-validator";
-import {AppResponse} from "../responses/app-response";
+import {AppResponse} from "../../responses/app-response";
 
 export function RequestValidator(params: object) {
 
@@ -9,7 +9,12 @@ export function RequestValidator(params: object) {
         key: string | symbol,
         descriptor: PropertyDescriptor
     ) {
-        descriptor.value = async (req: Request, res: Response) => {
+       const originalMethod = descriptor.value;
+
+        descriptor.value = async (...args: any[]) => {
+            const req: Request = args[0];
+            const res: Response = args[1];
+
             const paramClass = mapRequest(params, req)
 
             const errors = await validate(paramClass);
@@ -17,11 +22,13 @@ export function RequestValidator(params: object) {
             const errorMessage = getFirstError(errors)
 
             if(errorMessage) {
-                AppResponse.error(res, errorMessage, 'ValidationException', 422)
+                return AppResponse.error(res, errorMessage, 'ValidationException', 422);
             }
+
+            return originalMethod.apply(target, args);
         };
 
-        return descriptor.value;
+        return descriptor;
     };
 }
 
@@ -30,6 +37,11 @@ function mapRequest(params: object, req: Request) {
     for (const key in req.body) {
         //@ts-ignore
         params[key] = req.body[key];
+    }
+
+    for (const key in req.files) {
+        //@ts-ignore
+        params[key] = req.files[key];
     }
 
     return params;

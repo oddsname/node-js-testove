@@ -1,5 +1,6 @@
 <script setup>
 import AppBlock from "../components/common/blocks/AppBlock.vue";
+
 </script>
 <template>
   <div>

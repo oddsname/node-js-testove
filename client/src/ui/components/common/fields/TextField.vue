@@ -20,6 +20,14 @@ const props = defineProps({
   },
   errorMessage: {
     type: String,
+  },
+  width: {
+    type: String,
+    default: 'auto',
+  },
+  readonly: {
+    type: Boolean,
+    default: false,
   }
 })
 
@@ -30,10 +38,11 @@ const saveField = (fieldValue) => {
 }
 </script>
 <template>
-  <div class="input-group">
+  <div class="input-group" :style="{width} ">
     <input
         :type="props.type"
         class="form-control"
+        :readonly="props.readonly"
         :name="props.name"
         :value="props.modelValue"
         :placeholder="props.placeholder"

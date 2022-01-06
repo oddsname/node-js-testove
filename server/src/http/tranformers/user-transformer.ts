@@ -1,4 +1,4 @@
-import {User} from "../../domain/auth/entities/user";
+import {User, UserModel} from "../../domain/user/entities/user";
 
 export const UserTransformer = {
     single: function(user: User) {

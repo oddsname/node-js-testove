@@ -4,7 +4,7 @@ export class AppResponse {
     static success(res: Response, data: object = {}): Response<JSON> {
         return res.json({
             success: true,
-            data,
+            ...data,
         })
     }
 

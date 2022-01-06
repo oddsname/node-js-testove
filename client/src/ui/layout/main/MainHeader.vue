@@ -3,6 +3,7 @@ import {routeNames} from "../../../router";
 
 const headerMenu = [
   {text: 'Home', route: routeNames.filesList},
+  {text: 'UserFile Create', route: routeNames.fileCreate},
   {text: 'Login', route: routeNames.login},
 ]
 </script>
@@ -22,6 +23,7 @@ const headerMenu = [
           </router-link>
         </div>
       </div>
+
     </div>
   </div>
 

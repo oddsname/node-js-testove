@@ -1,13 +1,11 @@
-import {User} from "../entities/user";
-import {ObjectID} from "typeorm";
-
+import {User} from "../../user/entities/user";
+import {Schema} from "mongoose";
 
 export interface UserPayload {
-    id: ObjectID,
+    id: Schema.Types.ObjectId,
     email: string,
     name: string
 }
-
 
 export class UserJwtPayload {
     constructor(

@@ -53,9 +53,18 @@ export const useAuth = () => {
         return check();
     }
 
+    const getAuthUser = () => {
+        if(isUserAuth) {
+            return authUser;
+        }
+
+        return null;
+    }
+
     return {
         login,
         check,
         logout,
+        getAuthUser,
     }
 }

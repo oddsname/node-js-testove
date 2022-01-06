@@ -1,18 +1,16 @@
 import {Inject} from "typescript-ioc";
-import {UserRepository} from "../repositories/user-repository";
+import {UserRepository} from "../../user/repositories/user-repository";
 import {AuthenticationException} from "../../../http/exceptions/authentication-exception";
 import {HashService} from "../../../infrastructure/services/hash-service";
 import {JwtService} from "../../../infrastructure/services/jwt-service";
 import {UserJwtPayload, UserPayload} from "../value-objects/user-jwt-payload";
 import {AuthorizationException} from "../../../http/exceptions/authorization-exception";
-import {User} from "../entities/user";
+import {User, UserModel} from "../../user/entities/user";
 
-//TODO: replace to .env
 const signature = 'test';
 const expires = '24h';
 
 export class AuthService {
-
     constructor(
         @Inject private userRepository: UserRepository,
         @Inject private hashService: HashService,
@@ -47,15 +45,15 @@ export class AuthService {
         const decodedToken = this.jwtService.verify(token, signature);
 
         if (!decodedToken) {
-            throw new AuthorizationException("Invalid Token")
+            throw new AuthorizationException("User unauthorized")
         }
 
-        const userEmail = (decodedToken as UserPayload).email;
+        const email = (decodedToken as UserPayload).email;
 
-        const user = await this.userRepository.findByEmail(userEmail)
+        const user = await this.userRepository.findByEmail(email);
 
         if(!user) {
-            throw new AuthorizationException("Invalid Token")
+            throw new AuthorizationException("User unauthorized")
         }
 
         return user;
